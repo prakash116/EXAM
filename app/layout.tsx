@@ -13,12 +13,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className="flex min-h-screen flex-col">
+      <body className="flex min-h-screen flex-col overflow-x-hidden">
         <Header />
-        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 sm:px-6 sm:py-8">
+        <main className="mx-auto w-full min-w-0 max-w-6xl flex-1 px-3 py-5 sm:px-6 sm:py-8">
           {children}
         </main>
-        <footer className="no-print border-t border-gray-200 bg-white py-4 text-center text-xs text-gray-500">
+        <footer className="no-print border-t border-gray-200 bg-white px-3 py-4 text-center text-xs text-gray-500">
           © {new Date().getFullYear()} RestoCare Academy — Online Examination System
         </footer>
       </body>

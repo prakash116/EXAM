@@ -18,9 +18,11 @@ export default function ProgressBar({
 
   return (
     <div>
-      <div className="mb-1 flex items-center justify-between text-xs font-medium text-gray-600">
-        <span>{t(language, "progressLabel", { answered, total })}</span>
-        <span>{percentage}%</span>
+      <div className="mb-1 flex min-w-0 items-center justify-between gap-3 text-xs font-medium text-gray-600">
+        <span className="text-wrap-safe min-w-0">
+          {t(language, "progressLabel", { answered, total })}
+        </span>
+        <span className="shrink-0">{percentage}%</span>
       </div>
       <div
         className="h-2.5 w-full overflow-hidden rounded-full bg-gray-200"

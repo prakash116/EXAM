@@ -105,8 +105,8 @@ export default function CandidateForm({
     "w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-sm text-charcoal placeholder:text-gray-400 focus:border-gold-500 focus:outline-none focus:ring-2 focus:ring-gold-500/40";
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-4">
-      <h2 className="flex items-center gap-2 text-base font-bold text-charcoal">
+    <form onSubmit={handleSubmit} noValidate className="min-w-0 space-y-4">
+      <h2 className="text-wrap-safe flex min-w-0 items-center gap-2 text-base font-bold text-charcoal">
         <User className="h-5 w-5 text-gold-600" aria-hidden="true" />
         Candidate Information
       </h2>
@@ -220,13 +220,13 @@ export default function CandidateForm({
         </div>
       )}
 
-      <fieldset>
-        <legend className="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-gray-700">
+      <fieldset className="min-w-0">
+        <legend className="text-wrap-safe mb-1.5 flex min-w-0 items-center gap-1.5 text-sm font-medium text-gray-700">
           <Languages className="h-4 w-4 text-gold-600" aria-hidden="true" />
           Examination Language / परीक्षा की भाषा{" "}
           <span className="text-red-600">*</span>
         </legend>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid min-w-0 gap-3 sm:grid-cols-2">
           {(
             [
               { value: "en", label: "English" },
@@ -235,7 +235,7 @@ export default function CandidateForm({
           ).map((option) => (
             <label
               key={option.value}
-              className={`flex cursor-pointer items-center gap-2.5 rounded-lg border-2 px-3.5 py-2.5 text-sm font-semibold transition-colors ${
+              className={`text-wrap-safe flex min-w-0 cursor-pointer items-center gap-2.5 rounded-lg border-2 px-3.5 py-2.5 text-sm font-semibold transition-colors ${
                 language === option.value
                   ? "border-gold-500 bg-gold-50 text-charcoal"
                   : "border-gray-200 bg-white text-gray-600 hover:border-gold-300"
@@ -247,20 +247,20 @@ export default function CandidateForm({
                 value={option.value}
                 checked={language === option.value}
                 onChange={() => handleLanguageChange(option.value)}
-                className="h-4 w-4 accent-gold-600"
+                className="h-4 w-4 shrink-0 accent-gold-600"
               />
-              {option.label}
+              <span className="min-w-0">{option.label}</span>
             </label>
           ))}
         </div>
-        <p className="mt-1 text-xs text-gray-500">
+        <p className="text-wrap-safe mt-1 text-xs text-gray-500">
           Questions and instructions will be shown in the selected language.
           / प्रश्न और निर्देश चुनी गई भाषा में दिखाए जाएँगे।
         </p>
       </fieldset>
 
       {startDisabled && startDisabledMessage && (
-        <p role="alert" className="rounded-lg bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+        <p role="alert" className="text-wrap-safe rounded-lg bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
           {startDisabledMessage}
         </p>
       )}

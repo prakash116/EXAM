@@ -21,13 +21,13 @@ export default function QuestionNavigator({
   return (
     <nav
       aria-label="Question navigation"
-      className="rounded-xl bg-white p-4 shadow-card"
+      className="min-w-0 rounded-xl bg-white p-4 shadow-card"
     >
       <h3 className="mb-3 text-sm font-bold text-charcoal">
         {t(language, "questionsPanel")}
       </h3>
 
-      <div className="flex gap-2 overflow-x-auto pb-2 lg:grid lg:grid-cols-5 lg:overflow-visible lg:pb-0">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(2.5rem,1fr))] gap-2">
         {questions.map((question, index) => {
           const isCurrent = index === currentIndex;
           const isAnswered = Boolean(answers[question.id]);
@@ -50,7 +50,7 @@ export default function QuestionNavigator({
               onClick={() => onNavigate(index)}
               aria-label={`${t(language, "questionN", { n: index + 1 })}, ${stateLabel}`}
               aria-current={isCurrent ? "true" : undefined}
-              className={`h-10 w-10 shrink-0 rounded-lg border-2 text-sm font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-gold-500 ${stateClass}`}
+              className={`h-10 w-full max-w-10 justify-self-center rounded-lg border-2 text-sm font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-gold-500 ${stateClass}`}
             >
               {index + 1}
             </button>

@@ -88,7 +88,7 @@ export default function ResultSummary({
       }`}
     >
       <div
-        className={`flex items-center gap-3 px-6 py-4 text-white ${
+        className={`flex min-w-0 items-center gap-3 px-4 py-4 text-white sm:px-6 ${
           passed ? "bg-green-600" : "bg-red-600"
         }`}
       >
@@ -97,18 +97,18 @@ export default function ResultSummary({
         ) : (
           <XCircle className="h-7 w-7 shrink-0" aria-hidden="true" />
         )}
-        <div>
-          <h2 id="result-heading" className="text-xl font-extrabold tracking-wide">
+        <div className="min-w-0">
+          <h2 id="result-heading" className="text-wrap-safe text-xl font-extrabold tracking-wide">
             {passed ? t(language, "pass") : t(language, "fail")}
           </h2>
-          <p className="flex items-center gap-1.5 text-sm text-white/90">
+          <p className="text-wrap-safe flex min-w-0 items-center gap-1.5 text-sm text-white/90">
             <Award className="h-4 w-4" aria-hidden="true" />
             {t(language, getPerformanceKey(result.percentage))}
           </p>
         </div>
       </div>
 
-      <div className="grid gap-6 bg-white/70 p-6 md:grid-cols-[auto_1fr] md:items-center">
+      <div className="grid min-w-0 gap-5 bg-white/70 p-4 sm:p-6 md:grid-cols-[auto_minmax(0,1fr)] md:items-center">
         <div className="flex justify-center">
           <CircularPercentage
             percentage={result.percentage}
@@ -117,38 +117,38 @@ export default function ResultSummary({
           />
         </div>
 
-        <div>
-          <dl className="mb-4 grid gap-x-6 gap-y-1.5 text-sm sm:grid-cols-2">
-            <div className="flex justify-between gap-3 sm:block">
+        <div className="min-w-0">
+          <dl className="mb-4 grid min-w-0 gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
+            <div className="flex min-w-0 justify-between gap-3 sm:block">
               <dt className="font-medium text-gray-500">{t(language, "candidateName")}</dt>
-              <dd className="font-bold text-charcoal">{candidate.fullName}</dd>
+              <dd className="text-wrap-safe min-w-0 text-right font-bold text-charcoal sm:text-left">{candidate.fullName}</dd>
             </div>
-            <div className="flex justify-between gap-3 sm:block">
+            <div className="flex min-w-0 justify-between gap-3 sm:block">
               <dt className="font-medium text-gray-500">{t(language, "candidateRole")}</dt>
-              <dd className="font-bold text-charcoal">{candidate.role}</dd>
+              <dd className="text-wrap-safe min-w-0 text-right font-bold text-charcoal sm:text-left">{candidate.role}</dd>
             </div>
-            <div className="flex justify-between gap-3 sm:block">
+            <div className="flex min-w-0 justify-between gap-3 sm:block">
               <dt className="font-medium text-gray-500">{t(language, "examination")}</dt>
-              <dd className="font-bold text-charcoal">{examTitle}</dd>
+              <dd className="text-wrap-safe min-w-0 text-right font-bold text-charcoal sm:text-left">{examTitle}</dd>
             </div>
             {submittedAt && (
-              <div className="flex justify-between gap-3 sm:block">
+              <div className="flex min-w-0 justify-between gap-3 sm:block">
                 <dt className="font-medium text-gray-500">{t(language, "submittedOn")}</dt>
-                <dd className="font-bold text-charcoal">
+                <dd className="text-wrap-safe min-w-0 text-right font-bold text-charcoal sm:text-left">
                   {new Date(submittedAt).toLocaleString()}
                 </dd>
               </div>
             )}
           </dl>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <div className="grid min-w-0 grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-center"
+                className="min-w-0 rounded-lg border border-gray-200 bg-white px-2 py-2.5 text-center sm:px-3"
               >
-                <p className="text-lg font-extrabold text-charcoal">{stat.value}</p>
-                <p className="text-xs font-medium text-gray-500">{stat.label}</p>
+                <p className="text-wrap-safe text-lg font-extrabold text-charcoal">{stat.value}</p>
+                <p className="text-wrap-safe text-xs font-medium text-gray-500">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -156,7 +156,7 @@ export default function ResultSummary({
       </div>
 
       {result.unansweredAnswers > 0 && (
-        <p className="flex items-center gap-2 border-t border-gray-200 bg-white/70 px-6 py-3 text-xs text-gray-600">
+        <p className="text-wrap-safe flex min-w-0 items-center gap-2 border-t border-gray-200 bg-white/70 px-4 py-3 text-xs text-gray-600 sm:px-6">
           <CircleHelp className="h-4 w-4 shrink-0" aria-hidden="true" />
           {t(language, "unansweredNote")}
         </p>

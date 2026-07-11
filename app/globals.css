@@ -2,8 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   @apply bg-cream text-charcoal antialiased;
+}
+
+.text-wrap-safe {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+main :where(section, article, div, form, fieldset, nav) {
+  min-width: 0;
+}
+
+main :where(h1, h2, h3, h4, p, li, dt, dd, label, span, button, a) {
+  overflow-wrap: anywhere;
 }
 
 /* Print layout: hide navigation and controls, keep the result clean */

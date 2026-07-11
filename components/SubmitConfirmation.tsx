@@ -26,24 +26,24 @@ export default function SubmitConfirmation({
       role="dialog"
       aria-modal="true"
       aria-labelledby="submit-confirmation-title"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/60 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-charcoal/60 p-3 sm:p-4"
     >
-      <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
-        <div className="mb-4 flex items-start gap-3">
+      <div className="w-full min-w-0 max-w-md rounded-2xl bg-white p-4 shadow-2xl sm:p-6">
+        <div className="mb-4 flex min-w-0 items-start gap-3">
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold-100">
             <AlertTriangle className="h-6 w-6 text-gold-600" aria-hidden="true" />
           </span>
-          <div>
-            <h2 id="submit-confirmation-title" className="text-lg font-bold text-charcoal">
+          <div className="min-w-0">
+            <h2 id="submit-confirmation-title" className="text-wrap-safe text-lg font-bold text-charcoal">
               {t(language, "confirmTitle")}
             </h2>
-            <p className="mt-1.5 text-sm leading-relaxed text-gray-600">
+            <p className="text-wrap-safe mt-1.5 text-sm leading-relaxed text-gray-600">
               {t(language, "confirmBody")}
             </p>
             {unansweredNumbers.length > 0 && (
               <p
                 role="alert"
-                className="mt-3 rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm font-medium leading-relaxed text-red-800"
+                className="text-wrap-safe mt-3 rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm font-medium leading-relaxed text-red-800"
               >
                 {t(language, "confirmSkippedWarning", {
                   count: unansweredNumbers.length,

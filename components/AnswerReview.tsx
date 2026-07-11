@@ -22,7 +22,7 @@ export default function AnswerReview({
 }: AnswerReviewProps) {
   return (
     <section aria-labelledby="answer-review-heading">
-      <h2 id="answer-review-heading" className="mb-4 text-lg font-bold text-charcoal">
+      <h2 id="answer-review-heading" className="text-wrap-safe mb-4 text-lg font-bold text-charcoal">
         {t(language, "reviewHeading")}
       </h2>
 
@@ -36,7 +36,7 @@ export default function AnswerReview({
           return (
             <article
               key={question.id}
-              className={`rounded-xl border-2 bg-white p-5 shadow-card ${
+              className={`min-w-0 rounded-xl border-2 bg-white p-4 shadow-card sm:p-5 ${
                 isCorrect ? "border-green-300" : "border-red-300"
               }`}
             >
@@ -59,13 +59,13 @@ export default function AnswerReview({
                 )}
               </div>
 
-              <h3 className="mb-4 text-base font-semibold leading-relaxed text-charcoal">
+              <h3 className="text-wrap-safe mb-4 text-base font-semibold leading-relaxed text-charcoal">
                 {getQuestionText(question, language)}
               </h3>
 
               <div className="space-y-2 text-sm">
                 <p
-                  className={`rounded-lg px-4 py-2.5 font-medium ${
+                  className={`text-wrap-safe rounded-lg px-3 py-2.5 font-medium sm:px-4 ${
                     isCorrect
                       ? "bg-green-50 text-green-900"
                       : "bg-red-50 text-red-900"
@@ -76,7 +76,7 @@ export default function AnswerReview({
                     ? t(language, "notAnsweredText")
                     : `${selected}. ${getOptionText(question, selected, language)}`}
                 </p>
-                <p className="rounded-lg bg-green-50 px-4 py-2.5 font-medium text-green-900">
+                <p className="text-wrap-safe rounded-lg bg-green-50 px-3 py-2.5 font-medium text-green-900 sm:px-4">
                   <span className="mr-1 font-bold">
                     {t(language, "correctAnswerLabel")}
                   </span>
@@ -86,9 +86,9 @@ export default function AnswerReview({
               </div>
 
               {explanation && (
-                <p className="mt-3 flex items-start gap-2 rounded-lg bg-gold-50 px-4 py-3 text-sm leading-relaxed text-gray-700">
+                <p className="text-wrap-safe mt-3 flex min-w-0 items-start gap-2 rounded-lg bg-gold-50 px-3 py-3 text-sm leading-relaxed text-gray-700 sm:px-4">
                   <Info className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" aria-hidden="true" />
-                  <span>
+                  <span className="min-w-0">
                     <span className="font-bold text-charcoal">
                       {t(language, "explanation")}{" "}
                     </span>

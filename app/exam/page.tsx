@@ -118,27 +118,29 @@ export default function ExamPage() {
   };
 
   return (
-    <div>
+    <div className="w-full min-w-0">
       {/* Sticky exam header (desktop) */}
-      <div className="mb-6 rounded-xl bg-white p-4 shadow-card sm:sticky sm:top-[68px] sm:z-30 sm:p-5">
-        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-          <div>
-            <h1 className="text-base font-bold text-charcoal sm:text-lg">
+      <div className="mb-5 min-w-0 rounded-xl bg-white p-4 shadow-card sm:sticky sm:top-[68px] sm:z-30 sm:mb-6 sm:p-5">
+        <div className="mb-3 flex min-w-0 flex-wrap items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h1 className="text-wrap-safe text-base font-bold text-charcoal sm:text-lg">
               {exam.title}
             </h1>
-            <p className="mt-0.5 flex items-center gap-1.5 text-xs text-gray-600 sm:text-sm">
+            <p className="text-wrap-safe mt-0.5 flex min-w-0 items-center gap-1.5 text-xs text-gray-600 sm:text-sm">
               <User className="h-3.5 w-3.5 text-gold-600" aria-hidden="true" />
-              {session.candidate.fullName} · {session.candidate.role}
+              <span className="min-w-0">
+                {session.candidate.fullName} · {session.candidate.role}
+              </span>
             </p>
           </div>
-          <div className="text-right text-xs text-gray-600 sm:text-sm">
+          <div className="min-w-0 text-left text-xs text-gray-600 sm:text-right sm:text-sm">
             <p className="font-bold text-charcoal">
               {t(lang, "questionOf", {
                 current: currentIndex + 1,
                 total: questions.length,
               })}
             </p>
-            <p>
+            <p className="text-wrap-safe">
               <span className="font-semibold text-green-700">
                 {t(lang, "answeredCount", { count: answeredCount })}
               </span>
@@ -156,8 +158,8 @@ export default function ExamPage() {
         />
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
-        <div>
+      <div className="grid min-w-0 gap-5 lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-6">
+        <div className="min-w-0">
           <QuestionCard
             question={currentQuestion}
             index={currentIndex}
@@ -167,12 +169,12 @@ export default function ExamPage() {
             onSelect={(option) => handleSelect(currentQuestion.id, option)}
           />
 
-          <div className="mt-5 flex items-center justify-between gap-3">
+          <div className="mt-5 flex min-w-0 items-center justify-between gap-3">
             <button
               type="button"
               onClick={() => handleNavigate(currentIndex - 1)}
               disabled={currentIndex === 0}
-              className="flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gold-500 disabled:cursor-not-allowed disabled:opacity-40"
+              className="flex min-w-0 items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gold-500 disabled:cursor-not-allowed disabled:opacity-40 sm:px-4"
             >
               <ChevronLeft className="h-4 w-4" aria-hidden="true" />
               {t(lang, "previous")}
@@ -182,7 +184,7 @@ export default function ExamPage() {
               <button
                 type="button"
                 onClick={() => handleNavigate(currentIndex + 1)}
-                className="flex items-center gap-1.5 rounded-lg bg-charcoal px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-charcoal-light focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2"
+                className="flex min-w-0 items-center gap-1.5 rounded-lg bg-charcoal px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-charcoal-light focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 sm:px-5"
               >
                 {t(lang, "next")}
                 <ChevronRight className="h-4 w-4" aria-hidden="true" />
@@ -191,7 +193,7 @@ export default function ExamPage() {
               <button
                 type="button"
                 onClick={handleSubmitClick}
-                className="flex items-center gap-2 rounded-lg bg-gold-500 px-5 py-2.5 text-sm font-bold text-charcoal transition-colors hover:bg-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-600 focus:ring-offset-2"
+                className="flex min-w-0 items-center gap-2 rounded-lg bg-gold-500 px-4 py-2.5 text-sm font-bold text-charcoal transition-colors hover:bg-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-600 focus:ring-offset-2 sm:px-5"
               >
                 <Send className="h-4 w-4" aria-hidden="true" />
                 {t(lang, "submitExam")}
@@ -200,7 +202,7 @@ export default function ExamPage() {
           </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="min-w-0 space-y-4">
           <QuestionNavigator
             questions={questions}
             answers={session.answers}

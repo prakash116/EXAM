@@ -3,8 +3,8 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className="no-print sticky top-0 z-40 bg-charcoal text-white shadow-md">
-      <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-6">
-        <Link href="/" className="flex items-center gap-3">
+      <div className="mx-auto flex max-w-6xl items-center gap-2 px-3 py-3 sm:gap-3 sm:px-6">
+        <Link href="/" className="flex min-w-0 items-center gap-2 sm:gap-3">
           {/* Text-based logo placeholder — replace with an <Image> later */}
           <span
             aria-hidden="true"
@@ -12,11 +12,11 @@ export default function Header() {
           >
             RA
           </span>
-          <span className="leading-tight">
-            <span className="block text-base font-bold tracking-wide text-gold-400 sm:text-lg">
+          <span className="min-w-0 leading-tight">
+            <span className="block truncate text-base font-bold tracking-wide text-gold-400 sm:text-lg">
               RestoCare Academy
             </span>
-            <span className="block text-xs text-gray-300 sm:text-sm">
+            <span className="block truncate text-xs text-gray-300 sm:text-sm">
               Online Examination System
             </span>
           </span>
