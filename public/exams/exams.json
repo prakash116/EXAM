@@ -1,0 +1,11 @@
+{
+  "exams": [
+    {
+      "id": "tandoor-continental-50",
+      "title": "Chef MCQ Test — Tandoor & Continental",
+      "description": "50 questions: Q1–25 Tandoor, Q26–50 Continental cuisine. Available in English and Hindi.",
+      "file": "tandoor-continental-50.xlsx",
+      "passingPercentage": 60
+    }
+  ]
+}

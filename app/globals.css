@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-cream text-charcoal antialiased;
+}
+
+/* Print layout: hide navigation and controls, keep the result clean */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+  }
+
+  .print-area {
+    box-shadow: none !important;
+  }
+}
