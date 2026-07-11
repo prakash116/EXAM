@@ -7,6 +7,11 @@ export interface PublicExamLoadResult {
   errors: string[];
 }
 
+const publicPath = (path: string): string => {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  return `${basePath}${path}`;
+};
+
 /**
  * Reads the list of exams bundled with the deployment from
  * /exams/exams.json. Returns an empty list when the manifest is
@@ -14,7 +19,7 @@ export interface PublicExamLoadResult {
  */
 export async function fetchPublicExams(): Promise<PublicExamInfo[]> {
   try {
-    const response = await fetch("/exams/exams.json", { cache: "no-store" });
+    const response = await fetch(publicPath("/exams/exams.json"), { cache: "no-store" });
     if (!response.ok) return [];
     const data: unknown = await response.json();
     const exams = (data as { exams?: unknown })?.exams;
@@ -41,7 +46,7 @@ export async function loadPublicExam(
 ): Promise<PublicExamLoadResult> {
   let buffer: ArrayBuffer;
   try {
-    const response = await fetch(`/exams/${encodeURIComponent(info.file)}`, {
+    const response = await fetch(publicPath(`/exams/${encodeURIComponent(info.file)}`), {
       cache: "no-store",
     });
     if (!response.ok) {
